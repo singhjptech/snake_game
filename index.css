@@ -6,13 +6,16 @@ html, body {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border: solid 2px black;
 }
 
 .square {
-    width: 20px;
-    height: 20px;
-    background-color: blue;
+    width: 30px;
+    height: 30px;
+}
+
+.snake {
+    background-color: greenyellow;
 }
