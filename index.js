@@ -4,11 +4,11 @@ const score = document.getElementById('score')
 let squares = []
 let currentSnake = [2,1,0]
 let direction = 1
-let width = 10
+const width = 10
 
 function createGrid() {
     //creating 100 grid squares
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < width*width; i++) {
         const square = document.createElement('div')
         square.classList.add('square')
         grid.appendChild(square)
@@ -20,6 +20,15 @@ createGrid()
 currentSnake.forEach(i => squares[i].classList.add('snake'))
 
 function move() {
+    if (
+        (currentSnake[0] + width >= width*width && direction === width) || //if snake has hit bottom
+        (currentSnake[0] % width === 9 && direction === 1) || //if snake has hit right wall
+        (currentSnake[0] % width === 0 && direction === -1) || //if snake has hit left wall
+        (currentSnake[0] - width < 0 && direction === -width) || //if snake has hit top
+        squares[currentSnake[0] + direction].classList.contains('snake')
+    )
+    return clearInterval(timerId)
+
     //movement by poping & unshifting snake from squares
     const tail = currentSnake.pop()
     squares[tail].classList.remove('snake')
