@@ -34,6 +34,20 @@ function move() {
     const tail = currentSnake.pop()
     squares[tail].classList.remove('snake')
     currentSnake.unshift(currentSnake[0] + direction)
+
+    //when snake head hits the apple
+    if (squares[currentSnake[0]].classList.contains('apple')) {
+        //remove the class of apple
+        squares[currentSnake[0]].classList.remove('apple')
+        //grow our snake by adding class of snake to it
+        squares[tail].classList.add('snake')        
+        //grow our snake array
+        currentSnake.push(tail)        
+        //generate new apple
+        generateApples()
+        
+    }
+
     squares[currentSnake[0]].classList.add('snake')
 }
 move()
@@ -52,7 +66,6 @@ generateApples()
 // 38 is for the up arrow
 // 37 is for the left arrow
 // 40 is for the down arrow
-
 function control(e) {
     if (e.keyCode === 39) {        
         direction = 1
