@@ -19,3 +19,7 @@ html, body {
 .snake {
     background-color: greenyellow;
 }
+
+.apple {
+    background-color: blue;
+}
